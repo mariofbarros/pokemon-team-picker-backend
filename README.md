@@ -5,6 +5,12 @@
 
 A RESTful API built with **FastAPI** and **SQLAlchemy** to manage Pokémon teams. It supports CRUD operations for teams of exactly six Pokémon, validates payloads with Pydantic, and provides interactive API documentation via **Swagger/OpenAPI**. This backend connects directly to the [Pokemon Team Picker Frontend](https://github.com/mariofbarros/pokemon-team-picker-frontend).
 
+## Architecture
+
+![Pokemon Team Picker connections diagram](architecture.svg)
+
+Team CRUD from the frontend goes through this backend, which is the only thing that reads and writes the database. Pokémon lookups (sprites, types) are fetched by the frontend directly from PokeAPI and never touch this backend.
+
 ## Features
 
 - **CRUD Operations**: Create, Read, Update, and Delete Pokémon teams.
