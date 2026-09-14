@@ -11,6 +11,10 @@ A RESTful API built with **FastAPI** and **SQLAlchemy** to manage Pokémon teams
 
 Team CRUD from the frontend goes through this backend, which is the only thing that reads and writes the database. Pokémon lookups (sprites, types) are fetched by the frontend directly from PokeAPI and never touch this backend.
 
+## About PokeAPI
+
+[PokeAPI](https://pokeapi.co/) is a free, public RESTful API providing data on the Pokémon universe — no API key or authentication required. This backend never calls it directly; it only stores whatever Pokémon data (name, Pokédex number, sprite URL, types) the frontend already resolved from PokeAPI, as plain fields on each team's `pokemons` list.
+
 ## Features
 
 - **CRUD Operations**: Create, Read, Update, and Delete Pokémon teams.
