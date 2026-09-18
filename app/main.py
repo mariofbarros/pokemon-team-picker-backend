@@ -1,3 +1,5 @@
+# FastAPI app: REST CRUD for saved Pokemon teams. Pokemon data itself comes
+# from PokeAPI, fetched client-side; this API only stores the finished teams.
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -5,10 +7,12 @@ from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import engine, get_db
 
+# Creates the teams table on startup if it doesn't exist yet (no migrations).
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Pokemon Team Picker API")
 
+# Wide open CORS since this is a small public demo API with no auth.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

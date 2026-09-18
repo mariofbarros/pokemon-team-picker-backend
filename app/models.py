@@ -4,6 +4,9 @@ from .database import Base
 
 
 class Team(Base):
+    """A saved team of 6 Pokemon. Pokemon are stored denormalized as a JSON
+    blob (see schemas.Pokemon) rather than as related rows/tables."""
+
     __tablename__ = "teams"
 
     id = Column(Integer, primary_key=True, index=True)

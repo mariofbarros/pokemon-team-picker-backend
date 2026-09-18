@@ -1,3 +1,4 @@
+# Plain DB access functions used by the route handlers in main.py.
 from sqlalchemy.orm import Session
 
 from . import models, schemas
@@ -12,6 +13,7 @@ def get_team(db: Session, team_id: int):
 
 
 def create_team(db: Session, team: schemas.TeamCreate):
+    # Pokemon list is stored as plain JSON, not related rows.
     db_team = models.Team(
         name=team.name,
         pokemons=[p.model_dump() for p in team.pokemons],
